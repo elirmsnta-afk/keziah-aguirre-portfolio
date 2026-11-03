@@ -185,6 +185,42 @@
     @media (max-width:800px) { .theme-label { display:none; } .theme-toggle { padding:8px 11px; } .profile-card { justify-self:start; max-width:420px; } }
     @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } .reveal { opacity:1; transform:none; } }
 
+  
+    /* Soft editorial motion and ambient backdrop */
+    body { position:relative; isolation:isolate; overflow-x:hidden; }
+    body::before, body::after { content:""; position:fixed; z-index:-1; pointer-events:none; width:34rem; height:34rem; border-radius:50%; filter:blur(75px); opacity:.22; }
+    body::before { top:8rem; left:-18rem; background:radial-gradient(circle,rgba(154,184,158,.55),transparent 68%); animation:driftA 24s ease-in-out infinite alternate; }
+    body::after { right:-20rem; bottom:-8rem; background:radial-gradient(circle,rgba(205,190,155,.38),transparent 68%); animation:driftB 29s ease-in-out infinite alternate; }
+    @keyframes driftA { from{transform:translate3d(0,0,0) scale(.9)} to{transform:translate3d(9vw,10vh,0) scale(1.15)} }
+    @keyframes driftB { from{transform:translate3d(0,0,0) scale(1)} to{transform:translate3d(-8vw,-8vh,0) scale(1.12)} }
+    .hero { position:relative; }
+    .hero::after { content:""; position:absolute; width:190px; height:190px; right:2%; top:7%; border:1px solid rgba(93,117,101,.18); border-radius:50%; pointer-events:none; animation:slowSpin 38s linear infinite; }
+    @keyframes slowSpin { to{transform:rotate(360deg)} }
+    .profile-frame img { display:block; width:100%; height:100%; object-fit:cover; object-position:center 28%; image-rendering:auto; transform:translateZ(0); }
+    .profile-frame { overflow:hidden; }
+    .chat-launcher { position:fixed; right:24px; bottom:24px; z-index:90; border:0; border-radius:999px; padding:14px 19px; display:flex; align-items:center; gap:10px; color:#fff; background:var(--green-dark); box-shadow:0 12px 32px rgba(28,45,33,.22); cursor:pointer; font:600 .9rem var(--sans); transition:transform .25s,box-shadow .25s; }
+    .chat-launcher:hover { transform:translateY(-3px); box-shadow:0 17px 36px rgba(28,45,33,.28); }
+    .chat-dot { width:9px;height:9px;border-radius:50%;background:#a9d4ae;box-shadow:0 0 0 4px rgba(169,212,174,.16); }
+    .chat-panel { position:fixed; right:24px; bottom:88px; width:min(370px,calc(100vw - 28px)); max-height:min(570px,calc(100vh - 125px)); z-index:91; display:none; flex-direction:column; overflow:hidden; border:1px solid var(--line); border-radius:18px; background:var(--white); color:var(--ink); box-shadow:0 22px 65px rgba(20,35,25,.2); }
+    .chat-panel.open { display:flex; animation:chatIn .22s ease-out; }
+    @keyframes chatIn { from{opacity:0;transform:translateY(12px) scale(.98)} to{opacity:1;transform:none} }
+    .chat-head { padding:17px 18px; background:var(--green-dark); color:#fff; display:flex;align-items:center;justify-content:space-between; }
+    .chat-head strong { display:block;font:500 1.12rem var(--serif); }
+    .chat-head small { opacity:.8;font-size:.73rem; }
+    .chat-close { border:0;background:transparent;color:inherit;font-size:1.4rem;cursor:pointer; }
+    .chat-log { padding:17px; overflow-y:auto; display:flex; flex-direction:column; gap:12px; min-height:190px; }
+    .chat-bubble { max-width:88%;padding:11px 13px;border-radius:13px;background:var(--sage);font-size:.84rem;line-height:1.5;white-space:pre-wrap; }
+    .chat-bubble.user { align-self:flex-end;background:var(--green-dark);color:#fff; }
+    .chat-quick { display:flex;flex-wrap:wrap;gap:7px;padding:0 15px 13px; }
+    .chat-quick button { border:1px solid var(--line);background:transparent;color:var(--green-dark);border-radius:999px;padding:7px 10px;font-size:.74rem;cursor:pointer; }
+    .chat-form { display:flex;gap:8px;padding:12px;border-top:1px solid var(--line); }
+    .chat-form input { min-width:0;flex:1;border:1px solid var(--line);border-radius:9px;padding:11px;background:var(--paper);color:var(--ink);font: .85rem var(--sans); }
+    .chat-form button { border:0;border-radius:9px;padding:0 14px;background:var(--green-dark);color:#fff;cursor:pointer; }
+    body.dark .chat-head,body.dark .chat-bubble.user,body.dark .chat-form button,body.dark .chat-launcher { background:#a6c1aa;color:#172119; }
+    body.dark .chat-quick button { color:var(--green); }
+    @media(max-width:520px) { .chat-launcher{right:14px;bottom:14px}.chat-panel{right:14px;bottom:76px}.hero::after{width:120px;height:120px;right:0} }
+    @media(prefers-reduced-motion:reduce) { body::before,body::after,.hero::after{animation:none!important} }
+
   </style>
 </head>
 <body>
@@ -476,6 +512,14 @@
       <a href="mailto:keziahag.work@gmail.com">keziahag.work@gmail.com</a>
     </div>
   </footer>
+  <button class="chat-launcher" id="chatLauncher" type="button" aria-expanded="false" aria-controls="portfolioChat"><span class="chat-dot"></span> Ask about Keziah</button>
+  <section class="chat-panel" id="portfolioChat" aria-label="Portfolio information chat" aria-hidden="true">
+    <div class="chat-head"><div><strong>Hi, I'm Keziah's portfolio assistant</strong><small>Ask about services, experience, or availability</small></div><button class="chat-close" id="chatClose" aria-label="Close chat" type="button">×</button></div>
+    <div class="chat-log" id="chatLog" aria-live="polite"><div class="chat-bubble">Hello! Thanks for stopping by. What would you like to know about Keziah?</div></div>
+    <div class="chat-quick"><button type="button" data-question="What services does Keziah offer?">Services</button><button type="button" data-question="What experience does Keziah have?">Experience</button><button type="button" data-question="What tools can Keziah use?">Tools</button><button type="button" data-question="Is Keziah available for work?">Availability</button><button type="button" data-question="How can I contact Keziah?">Contact</button></div>
+    <form class="chat-form" id="chatForm"><input id="chatInput" type="text" placeholder="Ask a question..." aria-label="Your question" autocomplete="off"><button type="submit" aria-label="Send message">Send</button></form>
+  </section>
+
   <script>
     function toggleMenu() {
       const links = document.getElementById('navlinks');
