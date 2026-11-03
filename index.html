@@ -38,7 +38,8 @@
     .nav-cta, .button { display: inline-flex; align-items: center; justify-content: center; background: var(--green-dark); color: white; border-radius: 2px; padding: 12px 18px; font-size: .88rem; transition: .2s ease; border: 1px solid var(--green-dark); }
     .nav-cta:hover, .button:hover { background: var(--green); transform: translateY(-1px); }
     .menu { display: none; background: none; border: 0; color: var(--ink); font-size: 1.5rem; }
-    .hero { padding: 88px 0 78px; display: grid; grid-template-columns: 1.25fr .75fr; gap: 58px; align-items: center; }
+    .hero { padding: 88px 0 78px; display: grid; grid-template-columns: 1fr; gap: 0; align-items: center; }
+    .hero > div { max-width: 760px; }
     .eyebrow { text-transform: uppercase; letter-spacing: .19em; font-size: .72rem; font-weight: 700; color: var(--green); }
     h1, h2, h3, p { margin-top: 0; }
     h1 { font-family: var(--serif); font-size: clamp(3rem, 6vw, 5.6rem); line-height: .99; letter-spacing: -.045em; font-weight: 500; margin: 18px 0 22px; }
@@ -251,11 +252,6 @@
           </div>
           <p class="hero-note">Creative help and dependable support for the tasks that keep your day moving.</p>
         </div>
-        <aside class="profile-card" aria-label="Professional portrait of Keziah Aguirre">
-          <div class="profile-frame"><img src="/profile-photo-base64.txt" alt="Professional portrait of Keziah Aguirre"></div>
-          <div class="profile-caption"><span class="profile-dot"></span><div><strong>Keziah Aguirre</strong><small>Creative · Administrative · Client Support</small></div><span class="profile-index">KA / 26</span></div>
-          <div class="profile-orbit orbit-one"></div><div class="profile-orbit orbit-two"></div>
-        </aside>
       </section>
     </div>
 
@@ -623,8 +619,5 @@
     });
   </script>
 
-<script>
-fetch('/profile-photo-base64.txt').then(r=>r.text()).then(data=>{const img=document.querySelector('.profile-frame img');if(img){img.src='data:image/jpeg;base64,'+data.trim();img.alt='Professional headshot of Keziah Aguirre';}}).catch(()=>{});
-</script>
 </body>
 </html>
