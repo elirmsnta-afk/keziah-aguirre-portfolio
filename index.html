@@ -124,8 +124,9 @@
     @media (max-width:540px) { .gallery { gap:10px; } .sample-caption { padding:10px; } .sample-caption strong { font-size:.95rem; } }
 
     @media (max-width: 800px) {
-      .navlinks { display: none; position: absolute; top: 76px; left: 0; right: 0; background: var(--paper); padding: 22px; border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; }
+      .navlinks { display: none; position: absolute; top: 76px; left: 0; right: 0; background: var(--paper); padding: 22px; border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; z-index: 20; box-shadow: 0 16px 30px rgba(35,48,38,.08); }
       .navlinks.open { display: flex; }
+      .navlinks .theme-toggle { margin-top: 8px; }
       .menu { display: block; }
       .nav-cta { display: none; }
       .hero { grid-template-columns: 1fr; gap: 38px; padding: 70px 0; }
@@ -232,8 +233,8 @@
         <button class="menu" type="button" aria-label="Open navigation" aria-controls="navlinks" aria-expanded="false" onclick="toggleMenu()">☰</button>
         <div class="navlinks" id="navlinks">
           <a href="#about">About</a><a href="#services">Services</a><a href="#skills">Skills</a><a href="#work">Work samples</a><a href="#testimonials">Testimonials</a><a href="#education">Education</a>
+          <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode" title="Switch theme"><span class="theme-icon">☾</span><span class="theme-label">Dark mode</span></button>
         </div>
-        <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode" title="Switch theme"><span class="theme-icon">☾</span><span class="theme-label">Dark mode</span></button>
         <a class="nav-cta" href="#contact">Let's connect</a>
       </nav>
     </div>
