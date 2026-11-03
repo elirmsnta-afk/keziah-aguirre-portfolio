@@ -587,23 +587,35 @@
       chatLog.appendChild(bubble);
       chatLog.scrollTop = chatLog.scrollHeight;
     }
-    function answerPortfolioQuestion(question) {
-      const q = question.toLowerCase();
-      if (/service|offer|help|task/.test(q)) return 'Keziah offers creative and administrative support, including Canva graphics, promotional designs, document preparation, data entry, spreadsheet organization, online research, and general virtual assistance.';
-      if (/experience|work|client|freelance/.test(q)) return 'Keziah has freelance graphic design experience creating commissioned designs for clients, alongside academic and leadership experience coordinating tasks, preparing documents, and organizing information.';
-      if (/tool|software|canva/.test(q)) return 'Keziah works with Canva and common productivity tools for documents, spreadsheets, presentations, online research, and communication. Feel free to ask about a specific task.';
-      if (/education|study|school|degree/.test(q)) return 'Keziah is studying Bachelor of Elementary Education at Pamantasan ng Cabuyao and is also taking PathwayConnect through BYU-Pathway Worldwide.';
-      if (/avail|hire|rate|price|schedule/.test(q)) return 'For current availability, project scope, and rates, please contact Keziah directly so she can discuss your needs.';
-      if (/contact|email|reach|message/.test(q)) return 'You can contact Keziah at keziahag.work@gmail.com. Please include a short description of the support you need.';
-      if (/graphic|design|social|flyer|poster/.test(q)) return 'Keziah can help with promotional graphics, social media designs, flyers, invitations, and other Canva-based visual materials.';
-      return 'Thanks for your question! I can share information about Keziah’s services, experience, tools, education, availability, and contact details. For anything more specific, email keziahag.work@gmail.com.';
-    }
-    function submitChatQuestion(question) {
+    const chatHistory = [];
+    async function submitChatQuestion(question) {
       const clean = question.trim();
       if (!clean) return;
       addChatBubble(clean, 'user');
-      addChatBubble(answerPortfolioQuestion(clean), 'assistant');
       chatInput.value = '';
+      chatInput.disabled = true;
+      chatForm.querySelector('button').disabled = true;
+      const pending = document.createElement('div');
+      pending.className = 'chat-bubble';
+      pending.textContent = 'Thinking…';
+      chatLog.appendChild(pending);
+      chatLog.scrollTop = chatLog.scrollHeight;
+      chatHistory.push({ role: 'user', content: clean });
+      try {
+        const response = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: chatHistory.slice(-12) }) });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'The assistant is temporarily unavailable.');
+        pending.textContent = data.reply || 'Sorry, I could not prepare a response.';
+        chatHistory.push({ role: 'assistant', content: pending.textContent });
+      } catch (error) {
+        pending.textContent = error.message || 'Sorry, something went wrong. Please try again.';
+        chatHistory.pop();
+      } finally {
+        chatInput.disabled = false;
+        chatForm.querySelector('button').disabled = false;
+        chatInput.focus();
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }
     }
     chatForm.addEventListener('submit', e => { e.preventDefault(); submitChatQuestion(chatInput.value); });
     document.querySelectorAll('.chat-quick button[data-question]').forEach(button => {
