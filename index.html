@@ -152,8 +152,8 @@
     .theme-toggle { display:inline-flex; align-items:center; gap:8px; border:1px solid var(--line); border-radius:30px; padding:9px 13px; background:var(--white); color:var(--ink); font:inherit; font-size:.78rem; cursor:pointer; transition:all .25s ease; white-space:nowrap; }
     .theme-toggle:hover { border-color:var(--green); transform:translateY(-2px); }
     .theme-icon { font-size:1rem; color:var(--green); }
-    .profile-card { position:relative; max-width:390px; justify-self:end; width:100%; padding:14px; background:var(--white); border:1px solid var(--line); box-shadow:0 24px 70px rgba(35,48,38,.10); overflow:hidden; }
-    .profile-frame { position:relative; z-index:1; aspect-ratio:4/4.55; overflow:hidden; background:var(--sage); }
+    .profile-card { position:relative; max-width:300px; justify-self:end; width:100%; padding:14px; background:var(--white); border:1px solid var(--line); box-shadow:0 24px 70px rgba(35,48,38,.10); overflow:hidden; }
+    .profile-frame { position:relative; z-index:1; aspect-ratio:4/4.35; overflow:hidden; background:var(--sage); }
     .profile-frame img { width:100%; height:100%; object-fit:cover; object-position:center 35%; display:block; filter:saturate(.92); transition:transform .8s cubic-bezier(.2,.7,.2,1); }
     .profile-card:hover .profile-frame img { transform:scale(1.035); }
     .profile-caption { display:flex; align-items:center; gap:10px; padding:17px 5px 5px; position:relative; z-index:2; }
@@ -562,6 +562,53 @@
       revealTargets.forEach(el => observer.observe(el));
     } else revealTargets.forEach(el => el.classList.add('is-visible'));
 
+
+    // Accessible portfolio FAQ chat: works locally in the browser, no external AI service required.
+    const chatLauncher = document.getElementById('chatLauncher');
+    const chatPanel = document.getElementById('portfolioChat');
+    const chatClose = document.getElementById('chatClose');
+    const chatLog = document.getElementById('chatLog');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    function setChatOpen(open) {
+      chatPanel.classList.toggle('open', open);
+      chatPanel.setAttribute('aria-hidden', String(!open));
+      chatLauncher.setAttribute('aria-expanded', String(open));
+      if (open) setTimeout(() => chatInput.focus(), 80);
+      else chatLauncher.focus();
+    }
+    chatLauncher.addEventListener('click', () => setChatOpen(!chatPanel.classList.contains('open')));
+    chatClose.addEventListener('click', () => setChatOpen(false));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && chatPanel.classList.contains('open')) setChatOpen(false); });
+    function addChatBubble(message, who) {
+      const bubble = document.createElement('div');
+      bubble.className = 'chat-bubble' + (who === 'user' ? ' user' : '');
+      bubble.textContent = message;
+      chatLog.appendChild(bubble);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+    function answerPortfolioQuestion(question) {
+      const q = question.toLowerCase();
+      if (/service|offer|help|task/.test(q)) return 'Keziah offers creative and administrative support, including Canva graphics, promotional designs, document preparation, data entry, spreadsheet organization, online research, and general virtual assistance.';
+      if (/experience|work|client|freelance/.test(q)) return 'Keziah has freelance graphic design experience creating commissioned designs for clients, alongside academic and leadership experience coordinating tasks, preparing documents, and organizing information.';
+      if (/tool|software|canva/.test(q)) return 'Keziah works with Canva and common productivity tools for documents, spreadsheets, presentations, online research, and communication. Feel free to ask about a specific task.';
+      if (/education|study|school|degree/.test(q)) return 'Keziah is studying Bachelor of Elementary Education at Pamantasan ng Cabuyao and is also taking PathwayConnect through BYU-Pathway Worldwide.';
+      if (/avail|hire|rate|price|schedule/.test(q)) return 'For current availability, project scope, and rates, please contact Keziah directly so she can discuss your needs.';
+      if (/contact|email|reach|message/.test(q)) return 'You can contact Keziah at keziahag.work@gmail.com. Please include a short description of the support you need.';
+      if (/graphic|design|social|flyer|poster/.test(q)) return 'Keziah can help with promotional graphics, social media designs, flyers, invitations, and other Canva-based visual materials.';
+      return 'Thanks for your question! I can share information about Keziah’s services, experience, tools, education, availability, and contact details. For anything more specific, email keziahag.work@gmail.com.';
+    }
+    function submitChatQuestion(question) {
+      const clean = question.trim();
+      if (!clean) return;
+      addChatBubble(clean, 'user');
+      addChatBubble(answerPortfolioQuestion(clean), 'assistant');
+      chatInput.value = '';
+    }
+    chatForm.addEventListener('submit', e => { e.preventDefault(); submitChatQuestion(chatInput.value); });
+    document.querySelectorAll('.chat-quick button[data-question]').forEach(button => {
+      button.addEventListener('click', () => submitChatQuestion(button.dataset.question));
+    });
   </script>
 
 <script>
