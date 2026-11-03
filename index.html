@@ -557,7 +557,7 @@
       localStorage.setItem('keziah-theme', next);
       applyTheme(next);
     });
-    const revealTargets = document.querySelectorAll('main section, .hero > div, .profile-card, .gallery-group');
+    const revealTargets = document.querySelectorAll('main section:not(#work), .hero > div, .profile-card');
     revealTargets.forEach(el => el.classList.add('reveal'));
     if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const observer = new IntersectionObserver(entries => entries.forEach(entry => {
