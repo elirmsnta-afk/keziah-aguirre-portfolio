@@ -57,6 +57,31 @@
     .card-bottom strong { display: block; font-family: var(--serif); font-size: 1.45rem; font-weight: 500; }
     .card-bottom span { color: var(--muted); font-size: .85rem; }
     section { padding: 74px 0; border-top: 1px solid var(--line); }
+
+    .toc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0 24px; border-top:1px solid var(--line); }
+    .toc-grid a { display:flex; gap:14px; align-items:center; padding:15px 2px; border-bottom:1px solid var(--line); color:var(--ink); text-decoration:none; font-size:.9rem; }
+    .toc-grid a span { color:var(--green); font-size:.75rem; letter-spacing:.08em; }
+    .case-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .case-grid .project { min-height:235px; }
+    .results-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .result-card { background:var(--sage); padding:26px 22px; min-height:145px; display:flex; flex-direction:column; justify-content:space-between; }
+    .result-card strong { font-family:var(--serif); font-size:3rem; font-weight:500; line-height:1; color:var(--green-dark); }
+    .result-card span { color:var(--muted); font-size:.85rem; }
+    .packages-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; align-items:stretch; }
+    .package-card { background:var(--white); border:1px solid var(--line); padding:28px; display:flex; flex-direction:column; }
+    .package-card.featured { border-color:var(--green); background:var(--sage); }
+    .package-card h3 { font-family:var(--serif); font-size:1.65rem; font-weight:500; margin:12px 0 4px; }
+    .package-card p { color:var(--muted); font-size:.9rem; }
+    .package-price { color:var(--green-dark)!important; font-size:1.15rem!important; font-weight:600; margin:8px 0 12px; }
+    .package-card ul { padding-left:18px; color:var(--muted); font-size:.86rem; margin:8px 0 24px; }
+    .package-card li { margin:7px 0; }
+    .text-link { color:var(--green-dark); text-decoration:none; font-size:.85rem; font-weight:600; margin-top:auto; }
+    @media (max-width: 760px) {
+      .toc-grid { grid-template-columns:repeat(2,1fr); }
+      .case-grid,.packages-grid { grid-template-columns:1fr; }
+      .results-grid { grid-template-columns:repeat(2,1fr); }
+    }
+
     .section-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 38px; }
     h2 { font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 1.08; font-weight: 500; letter-spacing: -.035em; margin: 10px 0 0; }
     .section-intro { color: var(--muted); max-width: 470px; margin-bottom: 3px; }
@@ -232,7 +257,7 @@
         <a class="brand" href="#home">K<span>.</span> AGUIRRE</a>
         <button class="menu" type="button" aria-label="Open navigation" aria-controls="navlinks" aria-expanded="false" onclick="toggleMenu()">☰</button>
         <div class="navlinks" id="navlinks">
-          <a href="#about">About</a><a href="#services">Services</a><a href="#skills">Skills & tools</a><a href="#experience">Experience</a><a href="#work">Work samples</a><a href="#education">Education</a><a href="#readiness">Remote readiness</a>
+          <a href="#toc">Contents</a><a href="#about">About</a><a href="#services">Services</a><a href="#tools">Tools</a><a href="#process">Process</a><a href="#case-one">Case Study 01</a><a href="#case-two">Case Study 02</a><a href="#results">Results</a><a href="#testimonials">Testimonials</a><a href="#packages">Packages</a><a href="#why-me">Why Me</a><a href="#contact">Contact</a>
           <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode" title="Switch theme"><span class="theme-icon">☾</span><span class="theme-label">Dark mode</span></button>
         </div>
         <a class="nav-cta" href="#contact">Let's connect</a>
@@ -244,20 +269,20 @@
     <div class="wrap" id="home">
       <section class="hero" style="border:0">
         <div>
-          <div class="eyebrow">Creative & Administrative Virtual Assistant</div>
+          <div class="eyebrow">I. The Hero · Creative & Administrative Virtual Assistant</div>
           <h1>Creative support.<br><em>Organized solutions.</em></h1>
-          <p class="hero-copy">I’m <strong>Keziah G. Aguirre</strong>, an organized and detail-oriented aspiring Virtual Assistant with experience in freelance graphic design, digital content creation, client communication, and organizational support. I help with administrative tasks, document preparation, data entry, information management, and thoughtful design.</p>
+          <p class="hero-copy">I’m <strong>Keziah G. Aguirre</strong>, a detail-oriented Virtual Assistant based in Cabuyao, Philippines. I support individuals and teams with thoughtful design, organized administrative help, clear communication, and reliable follow-through.</p>
           <div class="hero-actions">
-            <a class="button" href="#work">Explore my work</a>
-            <a class="button secondary" href="#contact">Get in touch</a>
+            <a class="button" href="#services">Explore my services</a>
+            <a class="button secondary" href="#contact">Book a discovery call</a>
           </div>
-          <p class="hero-note">Creative help and dependable support for the tasks that keep your day moving.</p>
+          <p class="hero-note">Who I serve: people and teams who need dependable creative and administrative support. What I deliver: clear, careful work that helps keep things moving.</p>
         </div>
         <aside class="hero-card" aria-label="Portfolio introduction">
           <div class="eyebrow">Personal portfolio · 2026</div>
           <div class="monogram">KA.</div>
           <div class="card-bottom">
-            <strong>Keziah Aguirre</strong>
+            <strong>Keziah G. Aguirre</strong>
             <span>Creative · Administrative · Client Support</span>
           </div>
         </aside>
@@ -545,7 +570,189 @@
         <a class="button" href="mailto:keziahag.work@gmail.com?subject=Virtual%20Assistant%20Opportunity">Send an email</a>
       </div>
     </section>
-  </main>
+  
+    <section id="toc">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">What's inside</div><h2>Table of contents.</h2></div>
+          <p class="section-intro">A quick guide to who I am, what I do, how I work, and the experience behind my services.</p>
+        </div>
+        <div class="toc-grid">
+          <a href="#home"><span>I.</span> The Hero</a><a href="#about"><span>II.</span> About Me</a>
+          <a href="#services"><span>III.</span> Services</a><a href="#tools"><span>IV.</span> Tools</a>
+          <a href="#process"><span>V.</span> Process</a><a href="#case-one"><span>VI.</span> Case Study One</a>
+          <a href="#case-two"><span>VII.</span> Case Study Two</a><a href="#results"><span>VIII.</span> Results</a>
+          <a href="#testimonials"><span>IX.</span> Testimonials</a><a href="#packages"><span>X.</span> Packages</a>
+          <a href="#why-me"><span>XI.</span> Why Me</a><a href="#contact"><span>XII.</span> Contact</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">II. About Me</div><h2>A little about<br>the person behind the work.</h2></div>
+          <p class="section-intro">A creative eye, an organized approach, and a genuine respect for the details that make work feel complete.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-label">
+            <div class="eyebrow">My working philosophy</div>
+            <div class="quote">“Thoughtful work. Clear communication. Reliable follow-through.”</div>
+            <div class="eyebrow">Creative · Organized · Adaptable</div>
+          </div>
+          <div class="about-text">
+            <p><strong>My background.</strong> I’m a Bachelor of Elementary Education student at the University of Cabuyao and a Dean’s Lister for three semesters. My academic experience has strengthened my communication, research, planning, and information-organizing skills.</p>
+            <p><strong>My experience.</strong> I have worked on freelance graphic design projects, supported church ward and stake activities through design, writing, and photography, and completed an HR work immersion at Yazaki Corporation.</p>
+            <p><strong>What guides me.</strong> I value understanding the task before starting, being careful with details, communicating respectfully, and delivering work that meets the agreed expectations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">III. Services</div><h2>Support that makes<br>the workday lighter.</h2></div>
+          <p class="section-intro">Practical services focused on outcomes: less time spent sorting tasks, clearer communication, and polished everyday materials.</p>
+        </div>
+        <div class="services">
+          <article class="service"><div class="number">01</div><h3>Administrative Support</h3><p>Keep everyday work organized with document formatting, file organization, email assistance, and task coordination.</p></article>
+          <article class="service"><div class="number">02</div><h3>Data Entry & Research</h3><p>Turn scattered information into organized records through data entry, spreadsheet updates, online research, and careful checking.</p></article>
+          <article class="service"><div class="number">03</div><h3>Creative Design</h3><p>Present your ideas clearly with Canva graphics, invitations, promotional materials, and simple social media content.</p></article>
+          <article class="service"><div class="number">04</div><h3>Written & Client Communication</h3><p>Support smoother interactions with professional written replies, inquiry handling, and clear follow-ups.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">IV. Tools</div><h2>The platforms in<br>my everyday toolkit.</h2></div>
+          <p class="section-intro">Tools I have experience using for productivity, communication, organization, design, and content creation.</p>
+        </div>
+        <div class="skill-grid">
+          <div class="tool-card"><span class="tool-mark canva">AI</span><span>AI Tools<small>ChatGPT, Grammarly, Canva AI, Gemini</small></span></div>
+          <div class="tool-card"><span class="tool-mark docs">G</span><span>Productivity<small>Google Workspace, Microsoft 365</small></span></div>
+          <div class="tool-card"><span class="tool-mark">↗</span><span>Communication<small>Zoom, Google Meet, Slack, Discord</small></span></div>
+          <div class="tool-card"><span class="tool-mark">N</span><span>Project Management<small>Notion</small></span></div>
+          <div class="tool-card"><span class="tool-mark canva">C</span><span>Design & Content<small>Canva, CapCut, TikTok</small></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">V. Process</div><h2>Simple, thoughtful,<br>and easy to follow.</h2></div>
+          <p class="section-intro">A clear workflow helps both sides know what is happening, what comes next, and when to expect an update.</p>
+        </div>
+        <div class="services process-grid">
+          <article class="service"><div class="number">01 · Understand</div><h3>We talk through the task.</h3><p>We clarify your goals, priorities, preferred tools, instructions, and deadline.</p></article>
+          <article class="service"><div class="number">02 · Organize</div><h3>I map out the work.</h3><p>I confirm the scope, gather the needed information, and agree on the next steps with you.</p></article>
+          <article class="service"><div class="number">03 · Create</div><h3>I work with care.</h3><p>I complete the agreed tasks, keep details organized, and communicate if anything needs clarification.</p></article>
+          <article class="service"><div class="number">04 · Review</div><h3>We wrap up clearly.</h3><p>You review the work, share any agreed revisions, and receive the final files or updates.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="case-one">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">VI. Case Study One · Freelance Design</div><h2>Rams Shawarma<br>client design support.</h2></div>
+          <p class="section-intro">A real freelance engagement focused on translating client requests into customized digital materials.</p>
+        </div>
+        <div class="case-grid">
+          <article class="project"><div class="project-top"><span>01 · The need</span><span>Sep 2025 – Oct 2026</span></div><h3>Understand the brief.</h3><p>The client needed customized invitations and promotional materials that reflected their requests and intended use.</p></article>
+          <article class="project"><div class="project-top"><span>02 · The work</span><span>Creative delivery</span></div><h3>Design and refine.</h3><p>I created digital designs based on the client's requirements, communicated about requests, and handled revisions using the feedback provided.</p></article>
+          <article class="project"><div class="project-top"><span>03 · The value</span><span>Client-focused</span></div><h3>Polished, requested materials.</h3><p>The engagement gave the client customized invitation and promotional designs, with revisions aligned to the project specifications.</p></article>
+        </div>
+        <p class="honesty">This case study describes the work performed. No unverified performance metrics or client outcomes are claimed.</p>
+      </div>
+    </section>
+
+    <section id="case-two">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">VII. Case Study Two · Organizational Support</div><h2>Church ward & stake<br>creative support.</h2></div>
+          <p class="section-intro">A second experience showing how creative work can support communication and community activities.</p>
+        </div>
+        <div class="case-grid">
+          <article class="project"><div class="project-top"><span>01 · The need</span><span>Sep 2024 – Present</span></div><h3>Help activities communicate.</h3><p>Ward and stake activities needed visual and written materials to share announcements and event information.</p></article>
+          <article class="project"><div class="project-top"><span>02 · The work</span><span>Design · Writing · Photography</span></div><h3>Create supporting materials.</h3><p>I designed digital announcements and event materials and contributed written content and photography for organizational communication.</p></article>
+          <article class="project"><div class="project-top"><span>03 · The value</span><span>Ongoing service</span></div><h3>Consistent event communication.</h3><p>My contributions provided visual, written, and photographic materials that supported ward and stake activities.</p></article>
+        </div>
+        <p class="honesty">This is volunteer and organizational experience, presented separately from paid freelance work.</p>
+      </div>
+    </section>
+
+    <section id="results">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">VIII. Results</div><h2>Grounded in real<br>experience.</h2></div>
+          <p class="section-intro">I prefer honest proof over inflated numbers. These are verifiable milestones from my education, work, and training.</p>
+        </div>
+        <div class="results-grid">
+          <article class="result-card"><strong>3</strong><span>semesters as a Dean’s Lister</span></article>
+          <article class="result-card"><strong>3</strong><span>relevant experience roles represented in my resume</span></article>
+          <article class="result-card"><strong>4</strong><span>certifications listed in my current resume</span></article>
+          <article class="result-card"><strong>2</strong><span>languages: English and Filipino</span></article>
+        </div>
+        <p class="honesty">These figures describe documented milestones, not client growth, revenue, or performance claims.</p>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">IX. Testimonials</div><h2>Trust is earned<br>through the work.</h2></div>
+          <p class="section-intro">I want every recommendation here to come from a real person and reflect their actual experience.</p>
+        </div>
+        <div class="honesty">Client testimonials are not published yet. I’m keeping this section open until I have permission to share genuine feedback. No fabricated quotes or ratings.</div>
+      </div>
+    </section>
+
+    <section id="packages">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">X. Packages</div><h2>Three ways we<br>can work together.</h2></div>
+          <p class="section-intro">Choose a starting point based on the kind of support you need. Final scope, schedule, and pricing are confirmed after discussing the work.</p>
+        </div>
+        <div class="packages-grid">
+          <article class="package-card"><div class="eyebrow">01 · Task-based</div><h3>Quick Support</h3><p class="package-price">Custom quote</p><p>For a clearly defined task or one-time request.</p><ul><li>Document formatting</li><li>Data entry or online research</li><li>One-off Canva design request</li></ul><a class="text-link" href="#contact">Discuss a task →</a></article>
+          <article class="package-card featured"><div class="eyebrow">02 · Ongoing support</div><h3>Steady Assistance</h3><p class="package-price">Custom quote</p><p>For recurring tasks that benefit from a consistent helping hand.</p><ul><li>Administrative assistance</li><li>File and spreadsheet organization</li><li>Written communication support</li></ul><a class="text-link" href="#contact">Discuss ongoing support →</a></article>
+          <article class="package-card"><div class="eyebrow">03 · Creative + admin</div><h3>Complete Support</h3><p class="package-price">Custom quote</p><p>For projects that combine practical coordination and creative materials.</p><ul><li>Admin and research tasks</li><li>Canva graphics and content</li><li>Coordinated project assistance</li></ul><a class="text-link" href="#contact">Discuss a project →</a></article>
+        </div>
+        <p class="honesty">Rates are shared after the scope, workload, and timeline are clear. No fixed prices are displayed until they are confirmed.</p>
+      </div>
+    </section>
+
+    <section id="why-me">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">XI. Why Me</div><h2>Creative thinking.<br>Careful execution.</h2></div>
+          <p class="section-intro">A practical mix of creative experience, administrative exposure, and a learner’s mindset.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-label"><div class="eyebrow">What I bring</div><div class="quote">“I take the time to understand the task, then give it the attention it deserves.”</div><div class="eyebrow">Thoughtful · Respectful · Dependable</div></div>
+          <div class="about-text">
+            <p><strong>A blend of creative and administrative skills.</strong> My experience spans design, writing, photography, HR office exposure, and client communication.</p>
+            <p><strong>Care with information.</strong> My academic and workplace experiences have strengthened my attention to detail, organization, and willingness to clarify instructions rather than guess.</p>
+            <p><strong>Ready to learn and adapt.</strong> I am comfortable working with digital tools, receiving feedback, and adjusting to agreed priorities and workflows.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="eyebrow">XII. Contact</div>
+        <h2>Let’s talk about what you need help with.</h2>
+        <p>Have a task, a project, or a role in mind? Send me a message and we can arrange a discovery call to discuss the scope, priorities, and next steps.</p>
+        <p class="contact-email"><a href="mailto:keziahag.work@gmail.com">keziahag.work@gmail.com</a></p>
+        <a class="button" href="mailto:keziahag.work@gmail.com?subject=Discovery%20Call%20Inquiry">Book a discovery call</a>
+      </div>
+    </section>
+</main>
 
   <footer>
     <div class="wrap footer-inner">
