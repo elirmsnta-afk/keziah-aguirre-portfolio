@@ -120,9 +120,10 @@
     .contact .button { background: var(--paper); color: var(--green-dark); border-color: var(--paper); }
     .contact .button:hover { background: white; }
     footer { padding: 25px 0; color: var(--muted); font-size: .8rem; }
-    .contact-email { margin: 0 0 22px !important; font-size: 1.02rem; }
-    .contact-email a { color: #ffffff; text-decoration: underline; text-decoration-color: rgba(255,255,255,.45); text-underline-offset: 4px; }
-    .contact-email a:hover { text-decoration-color: #ffffff; }
+    .contact-email { margin: 0 0 22px !important; font-size: 1.02rem; position:relative; z-index:5; }
+    .contact-email a { display:inline-block; position:relative; z-index:6; pointer-events:auto; cursor:pointer; color:#ffffff; text-decoration:underline; text-decoration-color:rgba(255,255,255,.65); text-underline-offset:4px; }
+    .contact-email a:hover, .contact-email a:focus-visible { text-decoration-color:#ffffff; }
+    .contact .button { position:relative; z-index:6; pointer-events:auto; cursor:pointer; }
     .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
 
     .tool-card { display:flex; align-items:center; gap:12px; background:var(--sage); padding:15px 16px; color:var(--green-dark); font-size:.9rem; min-height:72px; }
