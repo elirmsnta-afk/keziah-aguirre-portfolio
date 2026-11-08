@@ -251,6 +251,27 @@
 
   
 
+  
+    /* Wide desktop layout and balanced navigation */
+    :root { --max: 1600px; }
+    .wrap { width: min(var(--max), calc(100% - 72px)); }
+    nav { gap: 24px; }
+    .brand { white-space: nowrap; flex: 0 0 auto; }
+    .navlinks { flex: 1 1 auto; min-width: 0; justify-content: space-between; gap: clamp(8px, 1vw, 16px); font-size: clamp(.76rem, .82vw, .88rem); }
+    .navlinks a { white-space: nowrap; }
+    .theme-toggle { flex: 0 0 auto; padding: 9px 11px; }
+    .nav-cta { flex: 0 0 auto; white-space: nowrap; }
+    @media (max-width: 1250px) {
+      .navlinks { display: none; position: absolute; top: 76px; left: 0; right: 0; background: var(--paper); padding: 22px; border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; z-index: 20; box-shadow: 0 16px 30px rgba(35,48,38,.08); }
+      .navlinks.open { display: flex; }
+      .navlinks .theme-toggle { margin-top: 8px; }
+      .menu { display: block; }
+      .nav-cta { display: none; }
+    }
+    @media (max-width: 540px) {
+      .wrap { width: calc(100% - 32px); }
+    }
+
   </style>
 </head>
 <body>
