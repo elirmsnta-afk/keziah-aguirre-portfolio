@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f8f8f5">
+  <meta name="theme-color" content="#fffafb">
   <meta property="og:title" content="Keziah Aguirre | Creative & Administrative Virtual Assistant">
   <meta property="og:description" content="Creative and administrative virtual assistance, with experience in graphic design, client communication, and office support.">
   <meta name="description" content="Keziah Aguirre is an aspiring Virtual Assistant offering creative, administrative, data entry, and client communication support.">
@@ -281,6 +281,78 @@
     @media (max-width: 540px) {
       .wrap { width: calc(100% - 32px); }
     }
+
+  
+    /* Blush pink, black & white editorial palette */
+    :root {
+      color-scheme: light;
+      --paper: #fffafb;
+      --white: #ffffff;
+      --ink: #211b1e;
+      --muted: #766b70;
+      --green: #d98fa4;
+      --green-dark: #302329;
+      --sage: #f8e8ed;
+      --line: #f0d8df;
+      --glow: rgba(217,143,164,.20);
+    }
+    body { background:var(--paper); color:var(--ink); }
+    .topbar { background:rgba(255,250,251,.94); border-color:var(--line); }
+    .brand span,.eyebrow,.number,.project-top,.toc-grid a span,.profile-index { color:#c66f8b; }
+    .navlinks a:hover,.text-link,.theme-icon { color:#bd6683; }
+    .nav-cta,.button { background:#302329; border-color:#302329; color:#fff; border-radius:999px; }
+    .nav-cta:hover,.button:hover { background:#c66f8b; border-color:#c66f8b; }
+    .button.secondary { color:#302329; border-color:#302329; background:transparent; }
+    .button.secondary:hover { color:#fff; background:#302329; }
+    .hero-card,.about-label,.result-card,.skill,.tool-card,.honesty { background:#f8e8ed; color:#302329; }
+    .hero-card:before,.hero-card:after,.profile-orbit { border-color:#d98fa4; }
+    .monogram,.card-bottom strong,.about-label .quote,.result-card strong,.gallery-group-head h4 { color:#302329; }
+    .service,.project,.package-card,.sample { background:#fff; border-color:var(--line); }
+    .service:hover,.project:hover,.tool-card:hover { border-color:#e3a6b8; box-shadow:0 16px 35px rgba(71,35,49,.08); }
+    .package-card.featured { border-color:#d98fa4; background:#fdf2f5; }
+    .package-price { color:#302329!important; }
+    .edu-card { border-left-color:#d98fa4; }
+    .contact { background:#302329; color:#fff; }
+    .contact .eyebrow,.contact .contact-label { color:#f0b8c8; }
+    .contact p,.contact-note { color:#eadde1!important; }
+    .contact .button { background:#f2b9c9; color:#302329; border-color:#f2b9c9; }
+    .contact .button:hover { background:#fff; border-color:#fff; }
+    .contact-detail { border-color:rgba(255,255,255,.3); }
+    .contact-detail:hover,.contact-detail:focus-visible { background:rgba(242,185,201,.12); border-color:#f2b9c9; }
+    .contact-email a { text-decoration-color:#f2b9c9; }
+    a:focus-visible,button:focus-visible { outline-color:#c66f8b; }
+    .theme-toggle { border-color:var(--line); }
+    .theme-toggle:hover { border-color:#d98fa4; }
+    .profile-dot { background:#d98fa4; box-shadow:0 0 0 5px #f8e8ed; }
+    .tool-mark { color:#302329; }
+    .gallery-group-head { border-color:var(--line); }
+    .tag { border-color:var(--line); }
+    body.dark {
+      color-scheme:dark;
+      --paper:#171316;
+      --white:#241d22;
+      --ink:#fff7fa;
+      --muted:#c4b5bc;
+      --green:#efadc0;
+      --green-dark:#f7dce5;
+      --sage:#30242b;
+      --line:#493640;
+      --glow:rgba(217,143,164,.13);
+      background:var(--paper);
+      color:var(--ink);
+    }
+    body.dark .topbar { background:rgba(23,19,22,.92); border-color:var(--line); }
+    body.dark .navlinks { color:var(--muted); }
+    body.dark .nav-cta,body.dark .button { background:#efadc0; color:#24171e; border-color:#efadc0; }
+    body.dark .button.secondary { background:transparent; color:#f7dce5; }
+    body.dark .hero-card,body.dark .about-label,body.dark .result-card,body.dark .skill,body.dark .tool-card,body.dark .honesty { background:#30242b; color:#f7dce5; }
+    body.dark .service,body.dark .project,body.dark .package-card,body.dark .sample,body.dark .profile-card { background:#241d22; border-color:var(--line); }
+    body.dark .package-card.featured { background:#30242b; border-color:#efadc0; }
+    body.dark .contact { background:#0f0c0e; }
+    body.dark .contact .button { background:#efadc0; color:#24171e; border-color:#efadc0; }
+    body.dark .theme-toggle { background:#30242b; color:var(--ink); border-color:var(--line); }
+    body.dark .tool-mark { background:#171316; }
+    @media (prefers-reduced-motion:reduce) { body::before { animation:none; } }
 
   </style>
 </head>
