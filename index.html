@@ -125,6 +125,16 @@
     .contact-email a:hover, .contact-email a:focus-visible { text-decoration-color:#ffffff; }
     .contact .button { position:relative; z-index:6; pointer-events:auto; cursor:pointer; }
     .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+    .contact-links { display:flex; flex-wrap:wrap; gap:18px; margin:24px 0 26px; position:relative; z-index:8; }
+    .contact-detail { display:flex; flex-direction:column; gap:5px; min-width:min(100%,260px); max-width:100%; padding:15px 18px; border:1px solid rgba(255,255,255,.28); color:#fff!important; position:relative; z-index:9; pointer-events:auto; cursor:pointer; }
+    .contact-detail:hover,.contact-detail:focus-visible { background:rgba(255,255,255,.1); border-color:#fff; }
+    .contact-label { font-size:.68rem; letter-spacing:.14em; color:#c8d6c9; }
+    .contact-value { font-size:.95rem; overflow-wrap:anywhere; text-decoration:underline; text-underline-offset:4px; }
+    .contact .contact-cta { position:relative; z-index:9; pointer-events:auto; cursor:pointer; }
+    .contact-note { margin:18px 0 0!important; font-size:.8rem; color:#c8d6c9!important; }
+    .footer-links { display:flex; gap:18px; }
+    .footer-links a { text-decoration:underline; text-underline-offset:3px; }
+    @media(max-width:540px) { .contact-links { flex-direction:column; } .contact-detail { width:100%; } .footer-links { flex-wrap:wrap; } }
 
     .tool-card { display:flex; align-items:center; gap:12px; background:var(--sage); padding:15px 16px; color:var(--green-dark); font-size:.9rem; min-height:72px; }
     .tool-mark { width:34px; height:34px; flex:0 0 34px; border-radius:10px; display:grid; place-items:center; font-weight:800; font-size:.92rem; background:#fff; color:var(--green-dark); box-shadow:0 1px 4px rgba(0,0,0,.06); }
@@ -295,12 +305,12 @@
         <div>
           <div class="eyebrow">I. The Hero · Creative & Administrative Virtual Assistant</div>
           <h1>Creative support.<br><em>Organized solutions.</em></h1>
-          <p class="hero-copy">I’m <strong>Keziah G. Aguirre</strong>, a detail-oriented Virtual Assistant based in Cabuyao, Philippines. I support individuals and teams with thoughtful design, organized administrative help, clear communication, and reliable follow-through.</p>
+          <p class="hero-copy">I help individuals and teams stay organized and communicate clearly through dependable administrative support, careful research, and thoughtful creative work, so they can focus on the priorities that matter.</p>
           <div class="hero-actions">
             <a class="button" href="#services">Explore my services</a>
             <a class="button secondary" href="#contact">Book a discovery call</a>
           </div>
-          <p class="hero-note">Who I serve: people and teams who need dependable creative and administrative support. What I deliver: clear, careful work that helps keep things moving.</p>
+          <p class="hero-note"><strong>Creative & Administrative Virtual Assistant</strong> · Cabuyao, Philippines · Philippine Time (UTC+8)</p>
         </div>
         <aside class="hero-card" aria-label="Portfolio introduction">
           <div class="eyebrow">Personal portfolio · 2026</div>
@@ -340,9 +350,10 @@
             <div class="eyebrow">Creative · Organized · Adaptable</div>
           </div>
           <div class="about-text">
-            <p><strong>My background.</strong> I’m a Bachelor of Elementary Education student at the University of Cabuyao and a Dean’s Lister for three semesters. My academic experience has strengthened my communication, research, planning, and information-organizing skills.</p>
-            <p><strong>My experience.</strong> I have worked on freelance graphic design projects, supported church ward and stake activities through design, writing, and photography, and completed an HR work immersion at Yazaki Corporation.</p>
-            <p><strong>What guides me.</strong> I value understanding the task before starting, being careful with details, communicating respectfully, and delivering work that meets the agreed expectations.</p>
+            <p><strong>The hook.</strong> I’m a Creative and Administrative Virtual Assistant who helps individuals and teams keep everyday work organized while presenting their ideas clearly.</p>
+            <p><strong>The story.</strong> My experience combines freelance graphic design, administrative exposure through HR work immersion, and ongoing volunteer creative support involving writing and photography. Studying Elementary Education has also strengthened my communication, research, planning, and information-organizing skills.</p>
+            <p><strong>The promise.</strong> I take time to understand the brief, confirm priorities and deadlines, and keep communication clear as I work. You receive thoughtful support shaped around the scope we agree on.</p>
+            <div class="tags"><span class="tag">English · Proficient</span><span class="tag">Filipino · Native / Fluent</span><span class="tag">Remote · UTC+8</span></div>
           </div>
         </div>
       </div>
@@ -355,10 +366,12 @@
           <p class="section-intro">Practical services focused on outcomes: less time spent sorting tasks, clearer communication, and polished everyday materials.</p>
         </div>
         <div class="services">
-          <article class="service"><div class="number">01</div><h3>Administrative Support</h3><p>Keep everyday work organized with document formatting, file organization, email assistance, and task coordination.</p></article>
-          <article class="service"><div class="number">02</div><h3>Data Entry & Research</h3><p>Turn scattered information into organized records through data entry, spreadsheet updates, online research, and careful checking.</p></article>
-          <article class="service"><div class="number">03</div><h3>Creative Design</h3><p>Present your ideas clearly with Canva graphics, invitations, promotional materials, and simple social media content.</p></article>
-          <article class="service"><div class="number">04</div><h3>Written & Client Communication</h3><p>Support smoother interactions with professional written replies, inquiry handling, and clear follow-ups.</p></article>
+          <article class="service"><div class="number">01</div><h3>More Organized Files</h3><p>Keep documents and digital folders easier to navigate through file organization, formatting, and consistent naming.</p></article>
+          <article class="service"><div class="number">02</div><h3>Cleaner, Updated Records</h3><p>Make information easier to use with accurate data entry, spreadsheet updates, and careful checking.</p></article>
+          <article class="service"><div class="number">03</div><h3>Useful Research Findings</h3><p>Get relevant information gathered and arranged in a clear format through focused online research.</p></article>
+          <article class="service"><div class="number">04</div><h3>Polished Visual Materials</h3><p>Share ideas with clear Canva graphics, invitations, promotional materials, and simple social content.</p></article>
+          <article class="service"><div class="number">05</div><h3>Clearer Client Communication</h3><p>Support professional interactions with drafted written replies, inquiry handling, and thoughtful follow-ups.</p></article>
+          <article class="service"><div class="number">06</div><h3>Smoother Task Coordination</h3><p>Keep agreed tasks moving with organized notes, status updates, and attention to deadlines and next steps.</p></article>
         </div>
       </div>
     </section>
@@ -382,14 +395,14 @@
     <section id="process">
       <div class="wrap">
         <div class="section-head">
-          <div><div class="eyebrow">V. Process</div><h2>Simple, thoughtful,<br>and easy to follow.</h2></div>
+          <div><div class="eyebrow">V. Process</div><h2>The Thoughtful<br>Support Method.</h2></div>
           <p class="section-intro">A clear workflow helps both sides know what is happening, what comes next, and when to expect an update.</p>
         </div>
         <div class="services process-grid">
-          <article class="service"><div class="number">01 · Understand</div><h3>We talk through the task.</h3><p>We clarify your goals, priorities, preferred tools, instructions, and deadline.</p></article>
-          <article class="service"><div class="number">02 · Organize</div><h3>I map out the work.</h3><p>I confirm the scope, gather the needed information, and agree on the next steps with you.</p></article>
-          <article class="service"><div class="number">03 · Create</div><h3>I work with care.</h3><p>I complete the agreed tasks, keep details organized, and communicate if anything needs clarification.</p></article>
-          <article class="service"><div class="number">04 · Review</div><h3>We wrap up clearly.</h3><p>You review the work, share any agreed revisions, and receive the final files or updates.</p></article>
+          <article class="service"><div class="number">01 · Clarify</div><h3>Start with a clear brief.</h3><p>We discuss the task, desired outcome, reference materials, tools, priorities, and deadline before work begins.</p></article>
+          <article class="service"><div class="number">02 · Organize</div><h3>Agree on the plan.</h3><p>I confirm the scope, arrange the information or files needed, and outline the next steps so expectations are aligned.</p></article>
+          <article class="service"><div class="number">03 · Deliver</div><h3>Move the work forward.</h3><p>I complete the agreed tasks with attention to detail and share an update if I need clarification or encounter a blocker.</p></article>
+          <article class="service"><div class="number">04 · Review</div><h3>Close the loop.</h3><p>You review the deliverables, share feedback within the agreed scope, and receive the final files or a clear status summary.</p></article>
         </div>
       </div>
     </section>
@@ -496,9 +509,13 @@
       <div class="wrap">
         <div class="eyebrow">XII. Contact</div>
         <h2>Let’s talk about what you need help with.</h2>
-        <p>Have a task, a project, or a role in mind? Send me a message and we can arrange a discovery call to discuss the scope, priorities, and next steps.</p>
-        <p class="contact-email"><a href="mailto:keziahag.work@gmail.com">keziahag.work@gmail.com</a></p>
-        <a class="button" href="mailto:keziahag.work@gmail.com?subject=Discovery%20Call%20Inquiry">Book a discovery call</a>
+        <p>Have a task, a project, or a role in mind? Tell me what you’re working on, and I’ll be happy to discuss how I can help and what the next steps could look like.</p>
+        <div class="contact-links">
+          <a class="contact-detail" href="mailto:keziahag.work@gmail.com" aria-label="Email Keziah at keziahag.work@gmail.com"><span class="contact-label">EMAIL</span><span class="contact-value">keziahag.work@gmail.com</span></a>
+          <a class="contact-detail" href="https://www.linkedin.com/in/keziahagwork/" target="_blank" rel="noopener noreferrer" aria-label="Visit Keziah’s LinkedIn profile"><span class="contact-label">LINKEDIN</span><span class="contact-value">linkedin.com/in/keziahagwork ↗</span></a>
+        </div>
+        <a class="button contact-cta" href="mailto:keziahag.work@gmail.com?subject=Discovery%20Call%20Inquiry" aria-label="Email Keziah to discuss a discovery call">Start a conversation</a>
+        <p class="contact-note">Based in the Philippines · Philippine Time (UTC+8)</p>
       </div>
     </section>
 </main>
@@ -506,7 +523,7 @@
   <footer>
     <div class="wrap footer-inner">
       <span>© 2026 Keziah Aguirre · Creative & Administrative Virtual Assistant</span>
-      <a href="mailto:keziahag.work@gmail.com">keziahag.work@gmail.com</a>
+      <div class="footer-links"><a href="mailto:keziahag.work@gmail.com">Email</a><a href="https://www.linkedin.com/in/keziahagwork/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>
     </div>
   </footer>
   <button class="chat-launcher" id="chatLauncher" type="button" aria-expanded="false" aria-controls="portfolioChat"><span class="chat-dot"></span> Ask about Keziah</button>
