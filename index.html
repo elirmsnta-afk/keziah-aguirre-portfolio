@@ -256,6 +256,24 @@
     .chat-form button { border:0;border-radius:9px;padding:0 14px;background:var(--green-dark);color:#fff;cursor:pointer; }
     body.dark .chat-head,body.dark .chat-bubble.user,body.dark .chat-form button,body.dark .chat-launcher { background:#a6c1aa;color:#172119; }
     body.dark .chat-quick button { color:var(--green); }
+    /* Blush-and-black chat theme: keep the widget aligned with the portfolio palette. */
+    .chat-launcher { background:#e6a0b5; color:#21171c; box-shadow:0 12px 32px rgba(20,10,16,.28); }
+    .chat-launcher:hover { background:#efb4c5; }
+    .chat-dot { background:#fff0f4; box-shadow:0 0 0 4px rgba(255,240,244,.22); }
+    .chat-panel { background:#1b1519; color:#f8edf1; border-color:#654353; box-shadow:0 22px 65px rgba(0,0,0,.42); }
+    .chat-head { background:#281c23; color:#fff3f7; border-bottom:1px solid #654353; }
+    .chat-bubble { background:#30232b; color:#f8edf1; }
+    .chat-bubble.user { background:#e6a0b5; color:#21171c; }
+    .chat-quick button { border-color:#654353; color:#e6a0b5; }
+    .chat-quick button:hover { background:#382630; border-color:#e6a0b5; }
+    .chat-form { border-top-color:#654353; }
+    .chat-form input { background:#171216; color:#fff3f7; border-color:#654353; }
+    .chat-form input::placeholder { color:#bbaab2; }
+    .chat-form button { background:#e6a0b5; color:#21171c; }
+    .chat-form button:hover { background:#efb4c5; }
+    body.dark .chat-head,body.dark .chat-bubble.user,body.dark .chat-form button,body.dark .chat-launcher { background:#e6a0b5; color:#21171c; }
+    body.dark .chat-head { background:#281c23; color:#fff3f7; }
+    body.dark .chat-quick button { color:#e6a0b5; }
     @media(max-width:520px) { .chat-launcher{right:14px;bottom:14px}.chat-panel{right:14px;bottom:76px}.hero::after{width:120px;height:120px;right:0} }
     @media(prefers-reduced-motion:reduce) { body::before,body::after,.hero::after{animation:none!important} }
 
