@@ -274,7 +274,16 @@
     body.dark .chat-head,body.dark .chat-bubble.user,body.dark .chat-form button,body.dark .chat-launcher { background:#e6a0b5; color:#21171c; }
     body.dark .chat-head { background:#281c23; color:#fff3f7; }
     body.dark .chat-quick button { color:#e6a0b5; }
-    @media(max-width:520px) { .chat-launcher{right:14px;bottom:14px}.chat-panel{right:14px;bottom:76px}.hero::after{width:120px;height:120px;right:0} }
+    @media(max-width:520px) {
+       .chat-launcher{right:14px;bottom:14px}
+       .chat-panel{right:14px;bottom:76px;width:calc(100vw - 28px);height:min(430px,56dvh);max-height:56dvh}
+       .chat-log{min-height:90px;flex:1}
+       .hero{grid-template-columns:1fr;gap:26px}
+       .hero-card{order:-1;display:flex;min-height:230px;padding:22px;margin-bottom:4px}
+       .monogram{display:block;font-size:5rem;line-height:1.05;visibility:visible;opacity:1}
+       .card-bottom{display:block;visibility:visible;opacity:1}
+       .hero::after{width:120px;height:120px;right:0}
+     }
     @media(prefers-reduced-motion:reduce) { body::before,body::after,.hero::after{animation:none!important} }
 
   
